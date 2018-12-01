@@ -31,7 +31,7 @@ public class MemoryTestApp {
 
     /**
      * 长期存活的对象将进入老年代
-     * -Xms20M -Xmx20M -Xmn10M -XX:SurvivorRatio=8 -XX:+UseSerialGC -XX:+PrintGCDetails -verbose:gc -XX:MaxTenuringThreshold=1 -XX:+PrintTenuringDistribution
+     * -Xms20M -Xmx20M -Xmn10M -XX:SurvivorRatio=8 -XX:+UseSerialGC -XX:+PrintGCDetails -verbose:gc -XX:MaxTenuringThreshold=15 -XX:TargetSurvivorRatio=90 -XX:+PrintTenuringDistribution
      */
     public static void testTenuringThreshold() {
         byte[] app1, app2, app3;
