@@ -43,9 +43,25 @@ public class MemoryTestApp {
         app3 = new byte[4 * _1MB];
     }
 
+    /**
+     * 动态对象年龄判定
+     * -Xms20M -Xmx20M -Xmn10M -XX:SurvivorRatio=8 -XX:+UseSerialGC -XX:+PrintGCDetails -verbose:gc -XX:MaxTenuringThreshold=15 -XX:+PrintTenuringDistribution
+     */
+    public static void testTenuringThreshold2() {
+        byte[] app1, app2, app3, app4;
+        app1 = new byte[_1MB / 4];
+        // app1 + app2 大于Survivor空间一半
+        app2 = new byte[_1MB / 4];
+        app3 = new byte[4 * _1MB];
+        app4 = new byte[4 * _1MB];
+        app4 = null;
+        app4 = new byte[4 * _1MB];
+    }
+
     public static void main(String[] args) {
 //        testEdenMinorGC();
 //        testPretenureSizeThreshold();
-        testTenuringThreshold();
+//        testTenuringThreshold();
+        testTenuringThreshold2();
     }
 }
